@@ -25,5 +25,8 @@ idx = my_tuple.index(30)
 
 my_slice = my_tuple[1:]
 
-print(my_slice)
+# длина 
+lenght = len(my_slice)
+
+print(lenght)
 
