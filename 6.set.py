@@ -58,6 +58,6 @@ diff_users = users - new_users
 
 # sd_users = users.symmetric_difference(new_users) # симметричная разность
 
-print(diff_users)
+# print(diff_users)
 
-import this
+# import this
