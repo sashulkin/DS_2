@@ -80,4 +80,72 @@ num = 0
 # my_list = [num **2 for num in range(10)]
 my_list = [num **2 for num in range(10) if num > 3]
 
-print(my_list)
+# print(my_list)
+
+# data = ['a', 'b', 'c', 'd']
+
+# print( list(enumerate(data)) )
+
+
+# *** класс enumerate() ***
+
+data = ['a', 'b', 'c', 'd']
+
+# print( list(enumerate(data)) )
+
+# for index, item in enumerate(data):
+#     print(index, item)
+
+
+# *** генератор словаря ***
+
+# my_dict = { i : i for i in ['A', 'B', 'c', 'd'] } # пример просто
+
+# my_dict = { item : index *20 for index, item in enumerate(data) }
+
+# my_dict = { item.upper() : index *20 for index, item in enumerate(data) }
+
+my_dict = { item.upper() : index *20 for index, item in enumerate(data) if index > 0}
+
+# print(my_dict)
+
+# *** Калькулятор с циклами ***
+
+while True: 
+    # ввод чисел 
+    num_list = []
+    for n in range(2):
+        num = int(input(f"Введите {n} число: "))
+        num_list.append(num)
+
+    # ввод команды 
+    while True:
+        cmd = input("Введите команду: ")
+        if cmd not in {"stop", "+", "-", "*", "/"}:
+            print("Вы ввели неправильную команду!!! :(((")
+            continue
+        else:
+            break
+    
+    # обработка выключения
+    if cmd == "stop":
+        print("До свидание!")
+        break
+
+    # вычисление 
+    if cmd == "+":
+        res = num_list[0] + num_list[1]
+    elif cmd == "-":
+        res = num_list[0] - num_list[1]
+    elif cmd == "*":
+        res = num_list[0] * num_list[1]
+    elif cmd == "/":
+        res = num_list[0] / num_list[1]
+    
+    # вывод результата
+    if float is type(res):
+        print(f"Результат: {res:.4f}")
+    else:
+        print(f"Результат: {res}")
+
+
