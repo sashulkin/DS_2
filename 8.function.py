@@ -92,5 +92,125 @@ def person_data_parser(**args):
     for parameter, value in args.items():
         print(f"{parameter} : {value}")
 
-person_data_parser(name="Sasha", age=26, prog_lang='Eng')
-person_data_parser(name="Kostya", age=27)
+# person_data_parser(name="Sasha", age=26, prog_lang='Eng')
+# person_data_parser(name="Kostya", age=27)
+
+
+# вариант 3. Функция, которая возвращает значение 
+
+def func_9(x,y):
+    z = x + y
+    return z
+
+# вызов функции 
+result = func_9(10, 20)
+
+# print(result)
+
+# возвращение нескольких значений
+
+def func_10(a,b):
+    res_1 = a ** 2
+    res_2 = b ** 3
+    return res_1, res_2
+
+# print(func_10(2,3))
+
+# присвоение нескольких возвращаемых значений в переменные
+val_1, val_2 = func_10(2,3)
+
+# print(val_1, val_2)
+
+# *** Безымянная функция (лямбда-выражения, лямбда-функции) ***
+
+# создание лямбды
+# foo = lambda x, y: (x+y)**2
+# # вызов лямбда-выражения
+# result = foo(2, 3)
+
+# print(result)
+
+# Лямбда внутри списка
+
+# my_lambdas = [lambda arg: arg **2, lambda arg: arg ** 3, lambda arg: arg ** 3]
+
+# print(my_lambdas)
+
+# print(my_lambdas[1](2))
+
+# Лямбда внутри словаря 
+
+lambda_dict = {"вычисление суммы": lambda x, y: x+y, "вычисление произведения": lambda x, y: x*y}
+
+# вызов лямбды из словаря
+# print(lambda_dict["вычисление суммы"](2, 4))
+
+
+# Лямбда внутри генератор списка
+
+# создание списка с использованием лямбды
+my_list = [(lambda a: a*2)(n) for n in range(10)]
+
+my_list_2 = [(lambda a, b: (a+b)*(a-b)) for idx, val in enumerate([10,20,30,40,50])]
+
+# создание кастомизированного списка на основе другого списка
+origin_list = [3,1,7,4,7,2]
+# лямбда с тернарным условным выражением
+my_list_3 = [ (lambda x:1 if x > 5 else 0) (n) for n in origin_list]
+# print(my_list_3) 
+
+# ***Декоратор ***
+
+# декоратор - один из видов паттернов (шаблонов) программирования (проектирования)
+# декоратор - функция, которая добавляет некий доп. функционал целевой функции
+
+# создание декоратора
+# def decorator_1(func):
+#     '''
+#     func : аргумент, которому присваивается объект целевой функции
+#     ''' 
+#     # обертка
+#     def wrapper():
+#         # код, который выполняется ДО целевой функции
+#         print("foo")
+
+#         # выполнение целевой функции
+#         func()
+
+#         # код, который выполняется ПОСЛЕ целевой функции
+#         print("bar")
+
+#     # возврат объекта обертки
+#     return wrapper
+
+# #целевая функция 
+# @decorator_1
+# def my_func_1():
+#     print("Hello!")
+
+# def my_func_2():
+#     print("Привет!")
+
+# my_func_1()
+# my_func_2()
+
+def decorator_2(func):
+    '''
+    func : аргумент, которому присваивается объект целевой функции
+    ''' 
+    # обертка
+    def wrapper(a, b):
+        # код, который выполняется ДО целевой функции
+        print("foo")
+        # выполнение целевой функции с передачей параметров
+        func(a, b)
+        # код, который выполняется ПОСЛЕ целевой функции
+        print("bar")
+    # возврат объекта обертки
+    return wrapper
+
+@decorator_2
+def my_func_3(x,y):
+    print(x+y)
+
+my_func_3(10, 5)
