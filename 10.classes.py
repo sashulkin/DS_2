@@ -88,8 +88,104 @@ class Human(Animal):
     def info(self):
         print(f"Я человек. Меня зовут {self.name}")
 
-john = Human("John", 2)
-john.move()
-john.info()
+# john = Human("John", 2)
+# john.move()
+# john.info()
 
-  
+# *** Полиморфизм ***
+
+#  поли + морф =  разные формы чего-то одного (информ объекты)
+
+# * 1 вид. Разные классы могут обладать методами с одним именем, но с разной функциональностью
+
+# родительский класс
+class A:
+    def method_1(self, arg):
+        print(f'Data: {arg}')
+
+# дочерний класс
+class A_1(A):
+    def method_1(self, a, b):
+        print(f"Data: {a+b}")
+
+# создание экземпляров классов
+a = A()
+a_1 = A_1()
+
+# вызов методо у экземпляров
+# a.method_1(100)
+# a_1.method_1(10, 20)
+
+# * 2 вид. применение "магических" методов (метод перегрузки операторов)
+
+# метод, который позволяет из экземпляра (объекта) класса "делать" функцию
+
+class CustomSum:
+    def __init__(self, param):
+        self.coeff = param
+
+    def __call__(self, a, b):
+        res = (a + b) * self.coeff
+        print(f"Result: {res}")
+
+    # маг-метод
+    def __str__(self):
+        return f"Custom Summator. Coeff: {self.coeff}"
+
+sum_1 = CustomSum(0.5)
+sum_2 = CustomSum(1.53)
+
+# эффект нашего "магического" метода
+# sum_1(2, 3)
+# sum_2(2, 3)
+
+# print(sum_1)
+
+# *** Инкапсуляция ***
+# инкапсуляция - скрытие атрибутов и/или методов
+
+# не строгая инкапсуляция
+class B:
+    def __init__(self, arg):
+        # не строго инкапсулированный атрибут
+        self._attr = arg
+       
+        # строго инкапсулированный атрибут
+        self.__attr2 = 100
+    
+    # не строго инкапсулированный атрибут
+    def _method(self):
+        print("Hello!")
+
+    # "строго" инкапсулированный атрибут
+    def __method_2(self):
+        print("World!")        
+    
+    # не инкапсулированный метод
+    def method_3(self):
+        self.__method_2()
+
+b = B(100)
+# print(b._attr)
+# b._method()
+
+# print(b._B._attr2)
+# b._B__method_2()
+# b.method_3()
+
+
+# *** Композиция (агрегация) ***
+# использование экземпляров одних классов внутри других классов
+
+class C:
+    def __call__(self, a):
+        return a ** 2
+
+class D: 
+    def method(self, x):
+        c = C() # создается объект класса D
+        res = c(x) + x # используется в качестве функции
+        print(res)
+
+d = D()
+d.method(10)
