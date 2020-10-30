@@ -188,4 +188,4 @@ class D:
         print(res)
 
 d = D()
-d.method(10)
+# d.method(10)
