@@ -1,3 +1,32 @@
 header, div.main, footer {
     border: 2px solid red;
 }
+
+/* header */
+
+header {
+    background-color: lightcoral;
+    height: 100px;
+    position: relative;
+}
+.header__menu {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.header__menu a {
+    font-family: 'Ubuntu', sans-serif;
+    color: lime;
+}
+/* content */
+.main {
+    background-color: rgb(36, 40, 97);
+    height: 100px;
+}
+
+/* footer */
+footer {
+    background-color: lightskyblue;
+    height: 100px;    
+}
